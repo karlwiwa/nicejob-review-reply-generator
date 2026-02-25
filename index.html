@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Free Review Response Generator | NiceJob</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Free Review Response Generator</h1>
+    <p>Paste a customer review and generate a professional reply instantly.</p>
+
+    <label>Customer review</label>
+    <textarea id="review" rows="6" placeholder="Paste a Google review here..."></textarea>
+
+    <label>Tone</label>
+    <select id="tone">
+      <option value="friendly-professional">Friendly + Professional</option>
+      <option value="warm">Warm</option>
+      <option value="short-direct">Short + Direct</option>
+      <option value="empathetic">Empathetic</option>
+    </select>
+
+    <label>Length</label>
+    <select id="length">
+      <option value="short">Short</option>
+      <option value="medium" selected>Medium</option>
+      <option value="long">Long</option>
+    </select>
+
+    <label>Reviewer name (optional)</label>
+    <input id="name" placeholder="e.g., Sarah" />
+
+    <button id="generateBtn">Generate Reply</button>
+
+    <div class="output" id="output">
+      Your response will appear here...
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
