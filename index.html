@@ -8,6 +8,21 @@
 </head>
 
 <body>
+  <!-- White Nav -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#" aria-label="NiceJob home">
+        <img
+          class="nj-logo"
+          src="https://get.nicejob.com/hubfs/raw_assets/public/atomhq-com/assets/images/nicejob_logo.svg"
+          alt="NiceJob"
+        />
+      </a>
+
+      <button class="btn-pill btn-primary" id="navStartFree" type="button">Start Free</button>
+    </div>
+  </header>
+
   <div class="container">
     <main class="panel">
       <h1>Free Review Response Generator</h1>
@@ -34,7 +49,7 @@
       <label for="name">Reviewer name (optional)</label>
       <input id="name" placeholder="e.g., Sarah" />
 
-      <!-- CAPTCHA (optional). Will only be REQUIRED if TURNSTILE_SECRET_KEY is set in Netlify -->
+      <!-- CAPTCHA (optional). Required only if TURNSTILE_SECRET_KEY is set in Netlify -->
       <div id="captchaWrap" class="captcha-wrap">
         <div class="captcha-label">Quick check to prevent spam</div>
         <div class="cf-turnstile" data-sitekey="PASTE_TURNSTILE_SITE_KEY_HERE"></div>
@@ -42,7 +57,7 @@
       </div>
 
       <div class="actions">
-        <button id="generateBtn">Generate Reply</button>
+        <button id="generateBtn" class="btn-pill btn-primary" type="button">Generate Reply</button>
       </div>
 
       <div id="usageCounter" class="micro"></div>
@@ -62,8 +77,8 @@
       </p>
 
       <div class="modal-cta">
-        <button id="ctaStart" class="btn-primary" type="button">Start free</button>
-        <button id="ctaDemo" class="btn-secondary" type="button">Book a demo</button>
+        <button id="ctaStart" class="btn-pill btn-primary" type="button">Start Free</button>
+        <button id="ctaDemo" class="btn-pill btn-secondary" type="button">Book a demo</button>
       </div>
 
       <button id="closeModal" class="btn-link" type="button">Close</button>
@@ -72,5 +87,12 @@
 
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="app.js"></script>
+
+  <script>
+    // placeholder until we add real links
+    document.getElementById("navStartFree").addEventListener("click", () => {
+      alert('CTA: "Start Free" (we’ll add the link later)');
+    });
+  </script>
 </body>
 </html>
