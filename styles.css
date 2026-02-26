@@ -1,12 +1,17 @@
 :root{
   --bg1:#0b1220;
   --bg2:#0f172a;
-  --panel:#0e1a2f;
-  --panel2:#0a1222;
+
+  --panel1: rgba(14,26,47,0.88);
+  --panel2: rgba(10,18,34,0.88);
+
   --text:#ffffff;
   --muted:#aeb9d3;
-  --btn:#4f46e5;
-  --btn2:#6d63ff;
+
+  /* NiceJob-ish CTA blue (match screenshot vibe) */
+  --cta:#0b5cff;
+  --cta2:#0a4fe0;
+
   --line:rgba(255,255,255,0.10);
 }
 
@@ -17,21 +22,53 @@ body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   color: var(--text);
   min-height:100vh;
-  padding: 48px 20px;
 
-  /* background like your screenshot */
+  /* keep your tool background */
   background:
-    radial-gradient(900px 500px at 50% 0%, rgba(79,70,229,0.25), transparent 60%),
-    radial-gradient(900px 500px at 20% 100%, rgba(99,102,241,0.18), transparent 60%),
+    radial-gradient(900px 500px at 50% 0%, rgba(11,92,255,0.18), transparent 60%),
+    radial-gradient(900px 500px at 20% 100%, rgba(99,102,241,0.14), transparent 60%),
     linear-gradient(180deg, var(--bg2), var(--bg1));
 }
 
+/* White nav like screenshot */
+.nav{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(15,23,42,0.08);
+}
+
+.nav-inner{
+  width: min(1150px, 94%);
+  margin: 0 auto;
+  height: 74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 14px;
+}
+
+.nav-brand{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+}
+
+.nj-logo{
+  height: 26px;
+  width: auto;
+  display:block;
+}
+
+/* Layout */
 .container{
   width:min(1100px, 92%);
   margin: 0 auto;
+  padding: 44px 0 64px;
 }
 
-/* Main panel/card */
+/* Main panel */
 .panel{
   width:min(980px, 92%);
   margin: 0 auto;
@@ -39,7 +76,7 @@ body{
 
   border-radius: 18px;
   border: 1px solid rgba(255,255,255,0.10);
-  background: linear-gradient(180deg, rgba(14,26,47,0.85), rgba(10,18,34,0.85));
+  background: linear-gradient(180deg, var(--panel1), var(--panel2));
   box-shadow: 0 30px 120px rgba(0,0,0,0.45);
 }
 
@@ -55,7 +92,7 @@ h1{
   font-size: 16px;
 }
 
-/* Labels + fields */
+/* Inputs */
 label{
   display:block;
   margin: 14px 0 8px;
@@ -80,23 +117,8 @@ textarea{
   min-height: 110px;
 }
 
-select{
-  appearance: auto;
-}
+select{ appearance: auto; }
 
-.row{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-@media (max-width: 860px){
-  h1{ font-size: 34px; }
-  .panel{ padding: 22px 18px; }
-  .row{ grid-template-columns: 1fr; }
-}
-
-/* Actions */
 .actions{
   display:flex;
   align-items:center;
@@ -105,36 +127,43 @@ select{
   flex-wrap: wrap;
 }
 
-button{
+/* Shared pill button style */
+.btn-pill{
   border: 0;
   cursor: pointer;
   font-weight: 800;
-  border-radius: 10px;
-  padding: 12px 16px;
+  border-radius: 999px;
+  padding: 12px 22px;
+  line-height: 1;
+  font-size: 14px;
 }
 
-#generateBtn{
-  background: linear-gradient(180deg, var(--btn2), var(--btn));
+/* Primary CTA (nav + generate) */
+.btn-primary{
+  background: linear-gradient(180deg, var(--cta), var(--cta2));
   color: white;
-  box-shadow: 0 10px 30px rgba(79,70,229,0.35);
+  box-shadow: 0 10px 30px rgba(11,92,255,0.25);
 }
 
-#generateBtn:hover{ filter: brightness(1.05); }
+.btn-primary:hover{ filter: brightness(1.05); }
 
+/* Secondary (modal) */
 .btn-secondary{
-  background: rgba(255,255,255,0.10);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(15,23,42,0.08);
+  color: #0f172a;
+  border: 1px solid rgba(15,23,42,0.18);
 }
 
 .btn-link{
   background: transparent;
+  border: none;
   color: rgba(255,255,255,0.78);
   text-decoration: underline;
   padding: 10px 0;
+  cursor: pointer;
 }
 
-/* Output box like screenshot */
+/* Output */
 .output{
   margin-top: 16px;
   background: rgba(2,6,23,0.75);
@@ -146,7 +175,7 @@ button{
   line-height: 1.6;
 }
 
-/* Status + micro text */
+/* Status + micro */
 .status{
   min-height: 18px;
   margin-top: 10px;
@@ -160,13 +189,12 @@ button{
   font-size: 12px;
 }
 
-/* Usage counter sits nicely under button */
 #usageCounter{
   color: rgba(255,255,255,0.70);
   font-size: 12px;
 }
 
-/* CAPTCHA block (kept subtle) */
+/* CAPTCHA */
 .captcha-wrap{
   margin-top: 14px;
   padding: 12px;
@@ -201,9 +229,7 @@ button{
   box-shadow: 0 30px 120px rgba(0,0,0,0.55);
 }
 
-.modal h2{
-  margin: 0 0 8px;
-}
+.modal h2{ margin: 0 0 8px; }
 
 .modal p{
   margin: 0;
@@ -218,7 +244,11 @@ button{
   flex-wrap: wrap;
 }
 
-.btn-primary{
-  background: linear-gradient(180deg, var(--btn2), var(--btn));
-  color: white;
+/* Responsive */
+@media (max-width: 860px){
+  .container{ padding: 28px 0 46px; }
+  .nav-inner{ height: 66px; }
+  .nj-logo{ height: 22px; }
+  h1{ font-size: 34px; }
+  .panel{ padding: 22px 18px; }
 }
