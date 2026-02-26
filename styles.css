@@ -269,40 +269,61 @@ select{ appearance: auto; }
 }
 
 /* Floating stars layer behind everything */
+/* Keep content above stars */
+.nav, .container, .panel { position: relative; z-index: 2; }
+
+/* Stars layer */
 .stars{
   position: fixed;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  overflow: hidden;   /* prevents scrollbars */
+  overflow: hidden;
 }
 
-/* Each group is "★★★★★" at 25% opacity */
+/* Each group of 5 stars */
 .star-group{
   position: absolute;
   color: rgba(255,255,255,0.25);
-  font-size: 22px;          /* tweak if you want bigger/smaller */
   letter-spacing: 2px;
-  filter: blur(0px);
+  font-size: 20px;
+
+  /* start near bottom immediately */
+  top: 100vh;
+
   animation: floatUp linear infinite;
   will-change: transform;
 }
 
-/* Gentle upward drift */
+/* Move from below viewport to above viewport (full height) */
 @keyframes floatUp {
-  0%   { transform: translateY(120vh) translateX(0px); }
-  100% { transform: translateY(-25vh) translateX(20px); }
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  8%   { opacity: 1; }
+  100% { transform: translateY(-140vh) translateX(22px); opacity: 1; }
 }
 
-/* Random-ish placements, speeds, and delays */
-.stars .star-group:nth-child(1)  { left: 8%;  top: 110%; animation-duration: 26s; animation-delay: 0s; }
-.stars .star-group:nth-child(2)  { left: 22%; top: 120%; animation-duration: 30s; animation-delay: 4s; font-size: 18px; }
-.stars .star-group:nth-child(3)  { left: 38%; top: 115%; animation-duration: 28s; animation-delay: 9s; }
-.stars .star-group:nth-child(4)  { left: 55%; top: 125%; animation-duration: 34s; animation-delay: 2s; font-size: 20px; }
-.stars .star-group:nth-child(5)  { left: 72%; top: 118%; animation-duration: 29s; animation-delay: 7s; }
-.stars .star-group:nth-child(6)  { left: 88%; top: 130%; animation-duration: 33s; animation-delay: 12s; font-size: 17px; }
+/* Push placements toward left/right edges */
+.stars .star-group:nth-child(1)  { left: 2%;  animation-duration: 26s; animation-delay: -2s; font-size: 18px; }
+.stars .star-group:nth-child(2)  { left: 5%;  animation-duration: 30s; animation-delay: -10s; }
+.stars .star-group:nth-child(3)  { left: 8%;  animation-duration: 28s; animation-delay: -6s; font-size: 22px; }
+.stars .star-group:nth-child(4)  { left: 10%; animation-duration: 34s; animation-delay: -14s; font-size: 19px; }
+.stars .star-group:nth-child(5)  { left: 14%; animation-duration: 29s; animation-delay: -18s; }
 
-.stars .star-group:nth-child(7)  { left: 15%; top: 140%; animation-duration: 36s; animation-delay: 14s; font-size: 19px; }
-.stars .star-group:nth-child(8)  { left: 45%; top: 135%; animation-duration: 31s; animation-delay: 18s; }
-.stars .star-group:nth-child(9)  { left: 65%; top: 145%; animation-duration: 38s; animation-delay: 20s; font-size: 18px; }
-.stars .star-group:nth-child(10) { left: 82%; top: 138%; animation-duration: 35s; animation-delay: 24s; }
+.stars .star-group:nth-child(6)  { left: 86%; animation-duration: 33s; animation-delay: -4s;  font-size: 17px; }
+.stars .star-group:nth-child(7)  { left: 89%; animation-duration: 36s; animation-delay: -12s; font-size: 20px; }
+.stars .star-group:nth-child(8)  { left: 92%; animation-duration: 31s; animation-delay: -20s; font-size: 18px; }
+.stars .star-group:nth-child(9)  { left: 95%; animation-duration: 38s; animation-delay: -8s;  font-size: 21px; }
+.stars .star-group:nth-child(10) { left: 98%; animation-duration: 35s; animation-delay: -16s; font-size: 18px; }
+
+/* More stars (still edge-biased) */
+.stars .star-group:nth-child(11) { left: 4%;  animation-duration: 40s; animation-delay: -22s; font-size: 18px; }
+.stars .star-group:nth-child(12) { left: 12%; animation-duration: 27s; animation-delay: -26s; font-size: 20px; }
+.stars .star-group:nth-child(13) { left: 7%;  animation-duration: 32s; animation-delay: -30s; font-size: 19px; }
+.stars .star-group:nth-child(14) { left: 16%; animation-duration: 36s; animation-delay: -34s; font-size: 17px; }
+.stars .star-group:nth-child(15) { left: 9%;  animation-duration: 29s; animation-delay: -38s; font-size: 22px; }
+
+.stars .star-group:nth-child(16) { left: 84%; animation-duration: 41s; animation-delay: -24s; font-size: 19px; }
+.stars .star-group:nth-child(17) { left: 90%; animation-duration: 28s; animation-delay: -28s; font-size: 21px; }
+.stars .star-group:nth-child(18) { left: 93%; animation-duration: 34s; animation-delay: -32s; font-size: 18px; }
+.stars .star-group:nth-child(19) { left: 96%; animation-duration: 37s; animation-delay: -36s; font-size: 20px; }
+.stars .star-group:nth-child(20) { left: 88%; animation-duration: 30s; animation-delay: -40s; font-size: 17px; }
