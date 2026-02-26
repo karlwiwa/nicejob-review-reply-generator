@@ -133,16 +133,26 @@ select{ appearance: auto; }
   cursor: pointer;
   font-weight: 800;
   border-radius: 999px;
-  padding: 12px 22px;
+
+  /* 25% taller */
+  padding: 15px 26px;
+
   line-height: 1;
-  font-size: 14px;
+  font-size: 15px;
 }
 
-/* Primary CTA (nav + generate) */
+/* Primary CTA (Start Free + Generate) */
 .btn-primary{
   background: linear-gradient(180deg, var(--cta), var(--cta2));
   color: white;
-  box-shadow: 0 10px 30px rgba(11,92,255,0.25);
+
+  /* remove glow */
+  box-shadow: none;
+}
+
+/* subtle hover instead of glow */
+.btn-primary:hover{
+  filter: brightness(1.04);
 }
 
 .btn-primary:hover{ filter: brightness(1.05); }
