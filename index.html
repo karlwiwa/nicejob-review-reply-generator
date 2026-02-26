@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Free Review Response Generator | NiceJob</title>
+  <meta name="description" content="Paste a customer review and generate a professional reply instantly. Choose tone, length, and add a reviewer name for personalization." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -17,7 +18,7 @@
 
     <label>Tone</label>
     <select id="tone">
-      <option value="friendly-professional">Friendly + Professional</option>
+      <option value="friendly-professional" selected>Friendly + Professional</option>
       <option value="warm">Warm</option>
       <option value="short-direct">Short + Direct</option>
       <option value="empathetic">Empathetic</option>
@@ -33,12 +34,41 @@
     <label>Reviewer name (optional)</label>
     <input id="name" placeholder="e.g., Sarah" />
 
+    <!-- CAPTCHA (Cloudflare Turnstile) -->
+    <!-- This can stay as-is for now. It won't be REQUIRED until you set TURNSTILE_SECRET_KEY in Netlify. -->
+    <div id="captchaWrap" class="captcha-wrap">
+      <div class="captcha-label">Quick check to prevent spam</div>
+      <div class="cf-turnstile" data-sitekey="PASTE_TURNSTILE_SITE_KEY_HERE"></div>
+      <div class="micro">If CAPTCHA is not configured yet, it will be ignored.</div>
+    </div>
+
     <button id="generateBtn">Generate Reply</button>
 
-    <div class="output" id="output">
-      Your response will appear here...
+    <div class="status" id="status"></div>
+
+    <div class="output" id="output">Your response will appear here...</div>
+  </div>
+
+  <!-- Limit Reached Modal -->
+  <div id="limitOverlay" class="overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal">
+      <h2>Free tool limit reached</h2>
+      <p>
+        You’ve reached the current limit of <strong>20 generations</strong> for this free tool.
+        Want to stop replying manually?
+      </p>
+
+      <div class="modal-cta">
+        <button id="ctaStart" class="btn-primary" type="button">Start free</button>
+        <button id="ctaDemo" class="btn-secondary" type="button">Book a demo</button>
+      </div>
+
+      <button id="closeModal" class="btn-link" type="button">Close</button>
     </div>
   </div>
+
+  <!-- Turnstile script (safe to include; won't block unless configured) -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
   <script src="app.js"></script>
 </body>
