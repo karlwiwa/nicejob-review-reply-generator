@@ -4,51 +4,52 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Free Review Response Generator | NiceJob</title>
-  <meta name="description" content="Paste a customer review and generate a professional reply instantly. Choose tone, length, and add a reviewer name for personalization." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
   <div class="container">
-    <h1>Free Review Response Generator</h1>
-    <p>Paste a customer review and generate a professional reply instantly.</p>
+    <main class="panel">
+      <h1>Free Review Response Generator</h1>
+      <p class="lead">Paste a customer review and generate a professional reply instantly.</p>
 
-    <label>Customer review</label>
-    <textarea id="review" rows="6" placeholder="Paste a Google review here..."></textarea>
+      <label for="review">Customer review</label>
+      <textarea id="review" rows="6" placeholder="Paste a Google review here..."></textarea>
 
-    <label>Tone</label>
-    <select id="tone">
-      <option value="friendly-professional" selected>Friendly + Professional</option>
-      <option value="warm">Warm</option>
-      <option value="short-direct">Short + Direct</option>
-      <option value="empathetic">Empathetic</option>
-    </select>
+      <label for="tone">Tone</label>
+      <select id="tone">
+        <option value="friendly-professional" selected>Friendly + Professional</option>
+        <option value="warm">Warm</option>
+        <option value="short-direct">Short + Direct</option>
+        <option value="empathetic">Empathetic</option>
+      </select>
 
-    <label>Length</label>
-    <select id="length">
-      <option value="short">Short</option>
-      <option value="medium" selected>Medium</option>
-      <option value="long">Long</option>
-    </select>
+      <label for="length">Length</label>
+      <select id="length">
+        <option value="short">Short</option>
+        <option value="medium" selected>Medium</option>
+        <option value="long">Long</option>
+      </select>
 
-    <label>Reviewer name (optional)</label>
-    <input id="name" placeholder="e.g., Sarah" />
+      <label for="name">Reviewer name (optional)</label>
+      <input id="name" placeholder="e.g., Sarah" />
 
-    <!-- CAPTCHA (Cloudflare Turnstile) -->
-    <!-- This can stay as-is for now. It won't be REQUIRED until you set TURNSTILE_SECRET_KEY in Netlify. -->
-    <div id="captchaWrap" class="captcha-wrap">
-      <div class="captcha-label">Quick check to prevent spam</div>
-      <div class="cf-turnstile" data-sitekey="PASTE_TURNSTILE_SITE_KEY_HERE"></div>
-      <div class="micro">If CAPTCHA is not configured yet, it will be ignored.</div>
-    </div>
+      <!-- CAPTCHA (optional). Will only be REQUIRED if TURNSTILE_SECRET_KEY is set in Netlify -->
+      <div id="captchaWrap" class="captcha-wrap">
+        <div class="captcha-label">Quick check to prevent spam</div>
+        <div class="cf-turnstile" data-sitekey="PASTE_TURNSTILE_SITE_KEY_HERE"></div>
+        <div class="micro">If CAPTCHA isn’t configured yet, it will be ignored.</div>
+      </div>
 
-    <button id="generateBtn">Generate Reply</button>
+      <div class="actions">
+        <button id="generateBtn">Generate Reply</button>
+      </div>
 
-    <div id="usageCounter" class="micro"></div>
+      <div id="usageCounter" class="micro"></div>
+      <div class="status" id="status"></div>
 
-    <div class="status" id="status"></div>
-
-    <div class="output" id="output">Your response will appear here...</div>
+      <div class="output" id="output">Your response will appear here...</div>
+    </main>
   </div>
 
   <!-- Limit Reached Modal -->
@@ -69,9 +70,7 @@
     </div>
   </div>
 
-  <!-- Turnstile script (safe to include; won't block unless configured) -->
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
   <script src="app.js"></script>
 </body>
 </html>
