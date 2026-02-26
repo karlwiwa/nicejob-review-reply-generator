@@ -5,6 +5,29 @@ function getCount() {
   return Number(localStorage.getItem(STORAGE_KEY) || "0");
 }
 
+function setCount(n) {
+  localStorage.setItem(STORAGE_KEY, String(n));
+}
+
+function incrementCount() {
+  const next = getCount() + 1;
+  setCount(next);
+  return next;
+}
+
+function updateUsageDisplay() {
+  const el = document.getElementById("usageCounter");
+  if (!el) return;
+  const remaining = Math.max(0, LIMIT - getCount());
+  el.textContent = `Free uses remaining: ${remaining}`;
+}
+const LIMIT = 20;
+const STORAGE_KEY = "nj_review_gen_count_v1";
+
+function getCount() {
+  return Number(localStorage.getItem(STORAGE_KEY) || "0");
+}
+
 function incrementCount() {
   const next = getCount() + 1;
   localStorage.setItem(STORAGE_KEY, String(next));
