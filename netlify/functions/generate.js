@@ -11,7 +11,7 @@ const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY || "";
 
 // Limits
 const DAILY_CAP = 20;      // per IP per day
-const PER_MINUTE_CAP = 6;  // per IP per minute
+const PER_MINUTE_CAP = 10;  // per IP per minute
 
 // In-memory store (basic). May reset on cold starts/scale.
 // Still very useful combined with CAPTCHA.
